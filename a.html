@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<head>
+<title>Note Board</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<link rel="icon" href="NoteBoard.png" />
+
+<script src="jquery/jquery-2.0.3.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/tinymce/tinymce.min.js"></script>
+
+<script src="lib/materialize/materialize.min.js" type="text/javascript"></script>
+<link href="lib/materialize/materialize.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" href="lib/materialComponents/material-components-web.min.css">
+<script src="lib/materialComponents/material-components-web.min.js"></script>
+
+<script src="lib/sweetAlert/sweetalert2.all.min.js"></script>
+
+<link href="jquery/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+<script src="jquery/jquery-ui.min.js" type="text/javascript"></script>
+
+<link href="popup.css?v=24" rel="stylesheet" type="text/css" />
+
+<link href="jquery/jquery.datetimepicker.css" rel="stylesheet" type="text/css" />
+<script src="jquery/jquery.datetimepicker.full.min.js" type="text/javascript"></script>
+
+<script src="jquery/jquery.fileupload.js"></script>
+<script src="lib/leader-line.min.js" type="text/javascript"></script>
+<script src="lib/jquery.adaptive-backgrounds.js" type="text/javascript"></script>
+
+<script src="jquery/jquery.kinetic.js" type="text/javascript"></script>
+<script src="popupMin.js" type="text/javascript"></script>
+
+    <script src="jquery/packery.pkgd.min.js" type="text/javascript"></script>
+<script src="jquery/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+
+<!-- Color Picker -->
+<link rel="Stylesheet" type="text/css" href="colorpicker/colorpicker.css" />
+<script type="text/javascript" src="colorpicker/colorpicker.js"></script>
+
+
+<!-- <script src="jquery/jquery.ui.widget.js"></script> -->
+<script src="jquery/jquery.iframe-transport.js"></script>
+
+<!-- SLIDES -->
+<link rel="stylesheet" href="lib/reveal/css/reveal.css">
+<link rel="stylesheet" href="lib/reveal/css/theme/black.css">
+<script src="lib/reveal/lib/js/head.min.js"></script>
+<script src="lib/reveal/js/reveal.js"></script>
+
+<script src="lib/firebase/firebase.js"></script>
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+</head>
+<body class="colorGris">
+	<div class="containerNB">
+		<div class="non-printable">
+		<div class="botones">
+
+        <div class="top-bar-icons-wrapper">
+            <ul class="top-bar-icons left">
+                <li id="papelera" class="fontsIcon" data-tooltip="papelera"><div><img src="appimg/papelera.png" /></div></li>
+                <li id="cambF" class="fontsIcon"><div><img src="appimg/font.png" /></div></li>
+                <li id="cambZoom" class="fontsZoom "><span id="subirF" class=" zoomin"><div><img src="appimg/font-zoomin.png" /></div></span>
+                    <span id="bajarF" class="zoomout"><div><img src="appimg/font-zoomout.png" /></div></li>
+                <li id="cambFondo"><div><img src="appimg/background.png" /></div></li>
+                <!-- <li id="panelBotDiv"><div><img id="boardsImg" src="appimg/boards.png" /></div></li> -->
+                <li id="compBot"><div><img src="appimg/share.png" /></div></li>
+                <li id="searchBot"><div><img src="appimg/search.png" /></div></li>
+                <li id="publicBot"><div><img src="appimg/publish.png" /></div></li>
+                <li id="invitacionesBot" ><div><img src="appimg/mailIcon.png" /></div></li>
+                <li id="friendsBot"><div><img src="appimg/friend.png" /></div></li>
+                <li id="slidesBot" ><div><img src="appimg/slides.png" /></div></li>
+                <li id="ordenaBot" ><div><img src="appimg/masonry.png" /></div></li>
+								<li id="kanbanBot" ><div> <i class="material-icons">view_week</i></div></li>
+            </ul>
+            <span id="nombreTablon"></span>
+            <ul class="top-bar-icons right">
+				<li id="botonchatgpt" class="right-button"><div><img src="../appimg/chatgptIcon.png" /></div></li>
+				<li id="botonPost" class="right-button"><div><img src="appimg/newnote.png" /></div></li>
+				<li id="cameraBot" class="right-button"><div> <i class="material-icons">camera_alt</i></div></li>
+				<li id="botonAnexa" class="right-button"><div><img src="appimg/clip.png" /></div></li>
+				<li id="stickersBot" class="right-button"><div><img src="appimg/sticker.png" /></div></li>
+				<li id="pluginBot" class="right-button"><div> <i class="material-icons">power</i></div></li>
+				<li id="backupBot" class="right-button"><div><img src="appimg/floppy.png" /></div></li>
+				<li id="optionsBot" class="right-button"><div><img src="appimg/options.png" /></div></li>
+				<li id="refreshBot" class="right-button"><div> <i class="material-icons">refresh</i></div></li>
+				<li id="datosUsuarioBot" class="right-button"><div><img src="appimg/login.png" /></div></li>
+				<li id="loginBot" class="right-button no-logged"><div>Login / Sign up</div></li>
+            </ul>
+
+        </div>
+        <div title="Muestra tablones" class="boardsSwitch"><img id="flecha" src="appimg/up-arrow.png"></div>
+        <div class="paneles2 bottomBar">
+        </div>
+
+		</div>
+		</div>
+
+
+	<div class="tablonPostits">
+		<div class="Postits" id="Postits" ></div>
+		<div id="botonVaciarPapelera" class="btn waves-effect waves-light red lighten-2" type="button">Vaciar Papelera</div>
+
+		<div class="NB-extension" id="black_overlay-web-app">
+			<div id="progress-NB">
+				<img src="appimg/Note Board.png" />
+				<div class="progress">
+					<div class="indeterminate"></div>
+				 </div>
+			</div>
+		</div>
+  </div>
+
+<!--    CONFIRMACION          -->
+		<div id="dialog-confirm"  class="modal modal-fixed-footer"></div>
+		<div id="dialog-confirm2" class="modal modal-fixed-footer"></div>
+		<div id="dialog-calendar" class="modal modal-fixed-footer"></div>
+
+<!--     PANELES     -->
+		<div class="paneles">
+			<div class="tablon noSortable" id="tablonAdd" orden="999"><div class="tabLabel" id="tab5LabelAdd"></div></div>
+    </div>
+
+    	<!--    Fuentes      -->
+		<div class="panelFuentes">
+			<div class="panelFuente" id="fuente1">Kalam</div>
+			<div class="panelFuente" id="fuente2">Droid Sans</div>
+			<div class="panelFuente" id="fuente3">Architects</div>
+			<div class="panelFuente" id="fuente4">Quando</div>
+			<div class="panelFuente" id="fuente5">Indie Flower</div>
+			<div class="panelFuente" id="fuente6">Quattrocento</div>
+			<div class="panelFuente" id="fuente7">Montserrat</div>
+			<div class="panelFuente" id="fuente8">Roboto</div>
+			<div class="panelFuente" id="fuente9">Karla</div>
+			<div class="panelFuente" id="fuente10">Balsamiq</div>
+    </div>
+
+<!--     Fondos     -->
+		<div class="fondos"></div>
+
+<!--     Nicks Compartidos     -->
+		<div class="nicksComp"></div>
+
+<!--     Search     -->
+		<div class="searchPanel">
+			<input type="text" id="searchInput">
+		</div>
+		<canvas id="canvas" width="19" height="19"></canvas>
+		<div id="canvasDiv">
+			<canvas id="canvasMaqueta" width="125" height="90"></canvas>
+			<div id="maquetaPant"></div>
+			<div id="slider"></div>
+			<div class="mapSwitch"><img id="flechaMap" src="appimg/up-arrow.png"></div>
+		</div>
+
+		<div id="nivelZoom"></div>
+
+		<!-- <div id="floating-button">
+		  <p class="plus">+</p>
+		</div> -->
+
+		<div class="fixed-action-btn">
+			<a class="btn-crea-nota btn-floating btn-large grey darken-3 mdc-elevation--z10">
+				<i class="large material-icons">mode_edit</i>
+			</a>
+			<ul>
+				<li><a class="mdc-elevation--z5 btn-floating green darken-1" id="post-chatgpt"><img id="chatgptIcon" src="../appimg/chatgptIcon.png" alt="chatgpt"></a></li>
+				<li><a class="mdc-elevation--z5 btn-floating red darken-1" id="post-embed-code"><i class="material-icons">code</i></a></li>
+				<li><a class="mdc-elevation--z5 btn-floating yellow darken-1" id="anexa-floating-button"><i class="material-icons">attach_file</i></a></li>
+				<!-- <li><a class="mdc-elevation--z15 btn-floating green" id="image-floating-button"><i class="material-icons">image</i></a></li> -->
+				<li><a class="mdc-elevation--z5 btn-floating blue" id="post-floating-button"><i class="material-icons">add</i></a></li>
+			</ul>
+		</div>
+
+			<div id="tooltip2"></div>
+		</div>
+
+</body>
+</html>
+<div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div>

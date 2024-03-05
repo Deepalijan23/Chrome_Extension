@@ -1,0 +1,40 @@
+{
+    "manifest_version": 3,
+    "name": "Reminder Pad",
+    "description": "Stay organized and never forget important tasks. Easily jot down quick notes, reminders, and to-dos right in your browser.",
+    "author": "deepalijan23@gmail.com",
+    "version": "0.0.1",
+    
+    "permissions": [
+        "storage","activeTab", "scripting", "sidePanel"
+    ],
+
+    "chrome_url_overrides" : {
+        "history": "myPage.html"
+      },
+
+    "icons": { 
+        "16": "icons/note_16.png",   
+        "36": "icons/note_36.png",   
+        "128": "icons/note_128.png"
+    },
+    
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "icons/note_16.png",   
+            "36": "icons/note_36.png",   
+            "128": "icons/note_128.png"
+        },
+        "default_title": "Note It Down"
+    },
+    
+    "content_scripts": [
+        {
+          "matches": ["https://*.google.com/*"],
+          "js": ["content-script.js"]
+        }
+      ]
+}
+
+  

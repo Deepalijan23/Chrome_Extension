@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 10px;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    background-color: #f8f9fa;
+  }
+  
+  #notes {
+    margin-bottom: 20px;
+  }
+  
+  .note {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .note:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .note.pinned {
+    background-color: #ffc107;
+  }
+  
+  textarea {
+    width: 400px;
+    height: 400px;
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+  }
+  
+  .color-picker {
+    margin-bottom: 5px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #c97e29;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #160f02;
+  }
+  
